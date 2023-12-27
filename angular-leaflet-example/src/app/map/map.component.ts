@@ -10,7 +10,8 @@ export class MapComponent implements AfterViewInit {
 
   private map: undefined | L.Map;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -18,7 +19,7 @@ export class MapComponent implements AfterViewInit {
 
   initMap = () => {
     this.map = L.map('map', {
-      center: [ 39.8282, -98.5795 ],
+      center: [39.8282, -98.5795],
       zoom: 3
     });
 
@@ -29,5 +30,21 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
+
+    let polygon = L.polygon([
+      [51.509, -0.08],
+      [51.503, -0.06],
+      [51.51, -0.047]
+    ]).addTo(this.map);
+
+    // let map = L.map('map').setView([51.505, -0.09], 13);
+    //
+    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // }).addTo(map);
+    //
+    // L.marker([51.5, -0.09]).addTo(map)
+    //   .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+    //   .openPopup();
   }
 }
